@@ -19,6 +19,7 @@ require 'rubygems/compatibility'
 require 'rubygems/defaults'
 require 'rubygems/deprecate'
 require 'rubygems/errors'
+require 'rubygems/util'
 
 ##
 # RubyGems is the Ruby standard for publishing and managing third party

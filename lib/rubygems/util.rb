@@ -132,4 +132,14 @@ module Gem::Util
     end
   end
 
+  def self.sub_ext(file, extension)
+    basename = file.chomp(File.extname(file))
+    if extension && extension.length > 0
+      extension = ".#{extension}" unless extension.start_with?('.')
+      "#{basename}#{extension}"
+    else
+      basename
+    end
+  end
+
 end

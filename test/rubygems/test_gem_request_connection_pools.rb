@@ -53,6 +53,28 @@ class TestGemRequestConnectionPool < Gem::TestCase
     refute no_proxy, 'mismatch'
   end
 
+  def test_to_proxy_substring
+    pools = Gem::Request::ConnectionPools.new nil, []
+
+    env_no_proxy = %w[
+      ems.example
+    ]
+
+    no_proxy = pools.send :no_proxy?, 'rubygems.example', env_no_proxy
+
+    refute no_proxy, 'mismatch'
+  end
+
+  def test_to_proxy_empty_string
+    pools = Gem::Request::ConnectionPools.new nil, []
+
+    env_no_proxy = ['']
+
+    no_proxy = pools.send :no_proxy?, 'ems.example', env_no_proxy
+
+    refute no_proxy, 'mismatch'
+  end
+
   def test_to_proxy_eh_wildcard
     pools = Gem::Request::ConnectionPools.new nil, []
 
